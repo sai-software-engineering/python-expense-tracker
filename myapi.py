@@ -1,17 +1,15 @@
 from fastapi import FastAPI, HTTPException, Depends
-from pydantic.v1 import BaseSettings, ConfigDict
-from sqlalchemy import create_engine,Column,Integer,String
+from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker,Session
+from sqlalchemy.orm import sessionmaker, Session
 from pydantic import BaseModel
 from typing import Optional, List
 
 app = FastAPI(title="Integration with SQL - Code with Josh")
 
-
 # Database setup
-engine = create_engine('sqlite:///users.db',connect_args={"check_same_thread":False})
-sessionLocal = sessionmaker(autocommit=False,autoflush=False,bind=engine)
+engine = create_engine('sqlite:///users.db', connect_args={"check_same_thread": False})
+sessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 # Database Model
@@ -19,8 +17,8 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(100),nullable=False)
-    email = Column(String(100),nullable=False,unique=True)
+    name = Column(String(100), nullable=False)
+    email = Column(String(100), nullable=False, unique=True)
     role = Column(String(100), nullable=False)
 
 Base.metadata.create_all(engine)
@@ -35,7 +33,8 @@ class UserResponse(BaseModel):
     name: str
     email: str
     role: str
-    ConfigDict.from_attributes = True
+
+    model_config = {"from_attributes": True}
 
 def get_db():
     db = sessionLocal()
@@ -44,43 +43,39 @@ def get_db():
     finally:
         db.close()
 
-get_db()
-#Get endpoint - root
+# Get endpoint - root
 @app.get("/")
 def root():
     return {"message": "Intro to FastAPI with SQL - Code with Josh"}
 
 # Get user by id
-@app.get("/users/(user_id}",response_model=UserResponse)
-def get_user(user_id:int, db:Session = Depends(get_db)):
+@app.get("/users/{user_id}", response_model=UserResponse)
+def get_user(user_id: int, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.id == user_id).first()
     if not user:
         raise HTTPException(status_code=404, detail="User not found!")
     return user
 
-
 # Create User
 @app.post("/users/")
-def create_user(user: UserCreate, db: Session=Depends(get_db)):
+def create_user(user: UserCreate, db: Session = Depends(get_db)):
     if db.query(User).filter(User.email == user.email).first():
-        raise HTTPException(status_code=404, detail="User already exists!")
-    # Create a new user
+        raise HTTPException(status_code=400, detail="User already exists!") # Changed to 400 Bad Request
     new_user = User(**user.model_dump())
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
     return new_user
 
-
 # Update user
 @app.put("/user/{user_id}", response_model=UserResponse)
-def update_user(user_id:int, user:UserCreate, db: Session=Depends(get_db)):
+def update_user(user_id: int, user: UserCreate, db: Session = Depends(get_db)):
     db_user = db.query(User).filter(User.id == user_id).first()
     if not db_user:
         raise HTTPException(status_code=404, detail="User does not exist!")
 
-    for field,value in user.dict().items():
-        setattr(db_user,field,value)
+    for field, value in user.dict().items():
+        setattr(db_user, field, value)
 
     db.commit()
     db.refresh(db_user)
@@ -88,7 +83,7 @@ def update_user(user_id:int, user:UserCreate, db: Session=Depends(get_db)):
 
 # Delete User
 @app.delete("/users/{user_id}")
-def delete_user(user_id:int, db:Session=Depends(get_db)):
+def delete_user(user_id: int, db: Session = Depends(get_db)):
     db_user = db.query(User).filter(User.id == user_id).first()
     if not db_user:
         raise HTTPException(status_code=404, detail="User does not exist!")
@@ -97,8 +92,7 @@ def delete_user(user_id:int, db:Session=Depends(get_db)):
     db.commit()
     return {"message": "User deleted"}
 
-
-#Get All Users
-@app.get("/users/",response_model=List[UserResponse])
-def get_all_users(db:Session=Depends(get_db)):
+# Get All Users
+@app.get("/users/", response_model=List[UserResponse])
+def get_all_users(db: Session = Depends(get_db)):
     return db.query(User).all()
