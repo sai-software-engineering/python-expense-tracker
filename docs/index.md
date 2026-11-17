@@ -25,9 +25,9 @@ and financial reports.
 
 ## Documentation Sections
 
-- Project Overview
-- Requirements
-- Architecture
+- [Project Overview](../README.md)
+- [Requirements](../docs/requirements/software-requirement-specification.md)
+- [Architecture](../docs/architecture/system-architecture.md)
 - Database Design
 - API Documentation
 - Testing
