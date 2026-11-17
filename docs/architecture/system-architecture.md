@@ -66,19 +66,18 @@ Example: Adding an Expense.
 
 ```mermaid
 architecture-beta
-
     group client(cloud)[Presentation Layer]
     group backend(server)[Spring Boot Application]
     group persistence(cloud)[Persistence Layer]
     group database(database)[Database Layer]
 
-    service browser(server)[Browser] in client
-    service frontend(server)[Frontend App] in client
+    service browser(internet)[Browser] in client
+    service frontend(cloud)[Frontend App] in client
 
     service controller(server)[REST Controllers] in backend
     service validation(server)[Validation] in backend
-    service service(server)[Service Layer] in backend
-    service dto(server)[DTOs] in backend
+    service serviceLayer(server)[Service Layer] in backend
+    service dto(database)[DTOs] in backend
 
     service repository(server)[Spring Data JPA] in persistence
     service hibernate(server)[Hibernate ORM] in persistence
@@ -90,11 +89,18 @@ architecture-beta
 
     controller:B -- T:validation
     validation:B -- T:dto
-    dto:B -- T:service
+    dto:B -- T:serviceLayer
 
-    service:R -- L:repository
+    serviceLayer:R -- L:repository
     repository:R -- L:hibernate
     hibernate:B -- T:sqlite
+
+    align row browser frontend
+    align row controller validation
+    align row serviceLayer dto
+    align row repository hibernate
+    
+   
  ```
 
 
