@@ -9,7 +9,7 @@ actor User
 
 package "Presentation Layer" {
     component "Web Browser" as Browser
-    component "HTML / CSS / JavaScript" as Frontend
+    component "HTML5 / CSS3 / JavaScript" as Frontend
 }
 
 package "Application Layer" {
