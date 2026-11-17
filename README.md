@@ -1,128 +1,142 @@
-# FastAPI User Management API
+# Python Expense Tracker
 
-A robust, lightweight RESTful API built with **FastAPI**, **SQLAlchemy**, and **SQLite**, designed for managing user records with full CRUD (Create, Read, Update, Delete) capabilities and automatic schema validation via Pydantic.
+A personal finance management web application built with **Python, FastAPI, HTML, CSS, and JavaScript**.
 
-## 📺 Acknowledgments & Tutorial
+The application aims to help users record income and expenses, organize transactions, monitor their financial activity, and visualize spending patterns through an interactive dashboard.
 
-This implementation was built following the fantastic step-by-step walkthrough:
+**Project Status:** 🚧 Under Development
 
-* **YouTube Tutorial:** [Integration with SQL - Code with Josh](https://www.youtube.com/watch?v=xq1Snezb1rs)
+---
 
-## 🚀 Tech Stack
+## Project Objectives
 
-* **Framework:** [FastAPI](https://fastapi.tiangolo.com/)
+- Track daily income and expenses.
+- Organize transactions using predefined and custom categories.
+- Monitor total income, expenses, and balance.
+- Analyze monthly spending patterns.
+- Visualize category-wise expenses.
+- Compare income against expenses.
 
-* **Database & ORM:** SQLite with SQLAlchemy (Synchronous session management)
+## Planned Features
 
-* **Data Validation:** Pydantic v2
+### Dashboard
+- Total income
+- Total expenses
+- Current balance
+- Monthly expense visualization
+- Category-wise spending visualization
+- Income vs. expenses visualization
 
-* **Server:** Uvicorn
+### Expense Management
+- Add expenses
+- View expenses
+- Update expenses
+- Delete expenses
 
-## 🛠️ Project Structure
+### Income Management
+- Add income
+- View income
+- Update income
+- Delete income
 
-```
-user-management-api/
-├── main.py           # FastAPI application entry point, models, schemas, and routes
-├── users.db          # Local SQLite database file (auto-generated)
-└── requirements.txt  # Project dependencies
+### Category Management
+- Predefined categories
+- Custom categories
+- Category management
 
-```
+### Reports
+- Monthly expense reports
+- Category-wise spending reports
+- Income vs. expenses reports
 
-## ⚙️ Getting Started & Installation
+## Technology Stack
 
-### 1. Create and Activate a Virtual Environment
+| Component | Technology |
+|---|---|
+| Backend | Python, FastAPI |
+| Frontend | HTML, CSS, JavaScript |
+| Database | SQLite |
+| ORM | SQLAlchemy |
+| Data Validation | Pydantic |
+| API Documentation | Swagger UI / OpenAPI |
+| Diagrams | PlantUML, Mermaid |
+| Documentation | Markdown, MkDocs |
+| Documentation Hosting | GitLab Pages |
+| Version Control | Git, GitLab |
 
-* **On Windows:**
+## Project Structure
 
-  ```
-  python -m venv venv
-  venv\Scripts\activate
-  
-  ```
-
-* **On macOS / Linux:**
-
-  ```
-  python3 -m venv venv
-  source venv/bin/activate
-  
-  ```
-
-### 2. Install Dependencies
-
-Install the required packages using `pip`:
-
-```
-pip install fastapi uvicorn sqlalchemy pydantic
-
-```
-
-### 3. Run the Application
-
-Start the development server with live reload enabled using Uvicorn:
-
-```plantuml
-@startuml
-
-left to right direction
-
-actor User
-
-rectangle "Expense Tracker" {
-
-    usecase "Add Expense" as UC1
-    usecase "Edit Expense" as UC2
-    usecase "Delete Expense" as UC3
-    usecase "View Expenses" as UC4
-    usecase "Manage Categories" as UC5
-    usecase "View Monthly Summary" as UC6
-    usecase "Manage Budget" as UC7
-    usecase "Generate Reports" as UC8
-
-}
-
-User --> UC1
-User --> UC2
-User --> UC3
-User --> UC4
-User --> UC5
-User --> UC6
-User --> UC7
-User --> UC8
-
-@enduml
-
+```text
+python-expense-tracker/
+│
+├── docs/
+│   ├── requirements/
+│   │   └── software-requirements-specification.md
+│   │
+│   └── architecture/
+│       ├── diagrams/
+│       │   └── use-case-diagram.puml
+│       └── use-case-diagram.md
+│
+├── app/
+│
+├── tests/
+│
+├── README.md
+└── mkdocs.yml
 ```
 
-## 📚 API Documentation & Endpoints
+*The project structure will evolve as development progresses.*
 
-Once the server is running, you can access the interactive Swagger UI and documentation directly in your browser:
+## Currency Support
 
-* **Swagger UI:** <http://127.0.0.1:8000/docs>
+The application will initially support **Indian Rupees (INR ₹)** only.
 
-* **ReDoc:** <http://127.0.0.1:8000/redoc>
+## Application Design
 
-### Core Endpoints Reference
-```plantuml
-@startsalt
-{
-{T
-+ Method | Endpoint | Description | Parameters
-+ GET | / | Health check root route | None
-+ GET | /users/ | Retrieve all users | None
-+ POST | /users/ | Create a new user | name, email, role
-+ GET | /users/{user_id} | Retrieve user by ID | user_id
-+ PUT | /user/{user_id} | Update existing user | user_id + JSON
-+ DELETE | /users/{user_id} | Delete user by ID | user_id
-}
-}
-@endsalt
-```
+The application will follow a layered architecture:
 
-## 💡 Key Features
+1. Frontend — User interface.
+2. Backend — Business logic and REST APIs.
+3. Database — Persistent transaction and category storage.
 
-* **Automatic Database Table Creation:** Uses SQLAlchemy metadata to automatically provision the `users` table on startup.
+Technical architecture and UML diagrams will be maintained in the `docs/` directory.
 
-* **Session Management Dependency:** Implements FastAPI's `Depends` injection pattern to cleanly open and close database sessions per request lifecycle.
+## Documentation
 
-* **Input Validation & Serialization:** Validates incoming payloads using Pydantic models and serializes database outputs safely via `model_config = {"from_attributes": True}`.
+Project documentation is maintained alongside the source code.
+
+Planned documentation includes:
+
+- Project Charter
+- Software Requirements Specification (SRS)
+- UML diagrams
+- System Architecture
+- Database Design
+- API Documentation
+- Test Documentation
+- User Guide
+
+Documentation will be published using MkDocs and GitLab Pages.
+
+## Getting Started
+
+The application is currently under development. Setup and execution instructions will be added once the initial application implementation is complete.
+
+## Project Constraints
+
+- Single-user application.
+- No authentication in the initial version.
+- INR currency support only.
+- SQLite as the initial database.
+
+## Future Enhancements
+
+- Budget management
+- CSV/PDF report exports
+- Recurring transactions
+- Data backup and restore
+
+## Author
+
+Developed as a practical project to explore Python backend development, API design, software documentation, UML, and Git-based workflows.
