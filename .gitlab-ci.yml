@@ -1,3 +1,4 @@
+
 stages:
   - build
   - deploy
@@ -17,15 +18,10 @@ build-documentation:
   stage: build
 
   before_script:
-    - apt-get update
-    - apt-get install -y --no-install-recommends plantuml graphviz
     - pip install -r requirements.txt
 
   script:
-    # Generate SVG diagrams from PlantUML files
-    - find docs -type f -name "*.puml" -exec plantuml -tsvg {} +
-
-    # Build the MkDocs website
+    # Generate PlantUML diagrams and build the MkDocs website
     - mkdocs build --strict
 
   artifacts:
