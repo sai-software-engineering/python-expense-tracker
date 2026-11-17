@@ -1,0 +1,27 @@
+site_name: Python Expense Tracker
+site_description: Technical documentation for Python Expense Tracker
+site_author: Project Documentation Team
+
+docs_dir: docs
+site_dir: public
+
+theme:
+  name: material
+
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+
+markdown_extensions:
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+
+plugins:
+  - search

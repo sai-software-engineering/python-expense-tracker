@@ -1,0 +1,58 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+default:
+  image: python:3.12-slim
+
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - .cache/pip/
+
+build-documentation:
+  stage: build
+
+  before_script:
+    - apt-get update
+    - apt-get install -y --no-install-recommends plantuml graphviz
+    - pip install -r requirements-docs.txt
+
+  script:
+    # Generate SVG diagrams from PlantUML files
+    - find docs -type f -name "*.puml" -exec plantuml -tsvg {} +
+
+    # Build the MkDocs website
+    - mkdocs build --strict
+
+  artifacts:
+    paths:
+      - public/
+    expire_in: 1 week
+
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+
+deploy-documentation:
+  stage: deploy
+
+  needs:
+    - job: build-documentation
+      artifacts: true
+
+  script:
+    - echo "Documentation build completed successfully."
+    - echo "Publishing documentation to GitLab Pages."
+
+  pages:
+    publish: public
+
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+
+  environment:
+    name: production
+    url: $CI_PAGES_URL

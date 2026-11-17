@@ -1,0 +1,31 @@
+@startuml
+
+title Python Expense Tracker - Entity Relationship Diagram
+
+hide circle
+skinparam linetype ortho
+
+entity "CATEGORY" as category {
+    * id : INTEGER <<PK>>
+    --
+    * name : VARCHAR(100)
+    * type : VARCHAR(20)
+    * is_default : BOOLEAN
+    * created_at : DATETIME
+}
+
+entity "TRANSACTION" as transaction {
+    * id : INTEGER <<PK>>
+    --
+    * type : VARCHAR(20)
+    * amount : DECIMAL(12,2)
+    * category_id : INTEGER <<FK>>
+    description : TEXT
+    * transaction_date : DATE
+    * created_at : DATETIME
+    updated_at : DATETIME
+}
+
+category ||--o{ transaction : "has"
+
+@enduml

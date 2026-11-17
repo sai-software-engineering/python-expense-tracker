@@ -4,3 +4,4 @@ sqlalchemy
 pydantic
 aiosqlite
 greenlet
+mkdocs-material
