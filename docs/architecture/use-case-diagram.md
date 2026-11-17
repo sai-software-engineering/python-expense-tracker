@@ -9,7 +9,7 @@ and the Python Expense Tracker application.
 
 ```mermaid
 usecase-beta
-direction LR
+direction TD
 
 actor User
 
