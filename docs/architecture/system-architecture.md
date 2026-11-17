@@ -64,7 +64,9 @@ Example: Adding an Expense.
 
 ## 4. Architecture Diagram
 
-
+```mermaid
+usecase-beta
+```
 
 ## 5. Technology Stack
 

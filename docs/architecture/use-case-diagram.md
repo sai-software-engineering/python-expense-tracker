@@ -7,8 +7,50 @@ and the Python Expense Tracker application.
 
 ## Diagram
 
-```plantuml
-::include{file=diagrams/system-architecture.puml}
+```mermaid
+usecase-beta
+direction LR
+
+actor User
+
+systemBoundary ExpenseTracker
+
+    Dashboard("View Dashboard")
+
+    AddExpense("Add Expense")
+    ViewExpenses("View Expenses")
+    UpdateExpense("Update Expense")
+    DeleteExpense("Delete Expense")
+
+    AddIncome("Add Income")
+    ViewIncome("View Income")
+    UpdateIncome("Update Income")
+    DeleteIncome("Delete Income")
+
+    ManageCategories("Manage Categories")
+    SelectCategory("Select Category")
+
+    ViewReports("View Reports")
+
+end
+
+User --> Dashboard
+
+User --> AddExpense
+User --> ViewExpenses
+User --> UpdateExpense
+User --> DeleteExpense
+
+User --> AddIncome
+User --> ViewIncome
+User --> UpdateIncome
+User --> DeleteIncome
+
+User --> ManageCategories
+User --> ViewReports
+
+AddExpense ..> : include SelectCategory
+AddIncome ..> : include SelectCategory
 
 ```
 

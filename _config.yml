@@ -1,0 +1,20 @@
+title: Expense Tracker
+description: Technical Documentation for Expense Tracker
+
+theme: jekyll-theme-cayman
+
+source: docs
+destination: public
+
+markdown: kramdown
+highlighter: rouge
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-remote-theme
+  - jekyll-include-cache
+
+
+mermaid:
+  enabled: true
+  version: 12.3.0

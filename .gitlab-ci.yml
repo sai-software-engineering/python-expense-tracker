@@ -1,28 +1,16 @@
-
 stages:
   - build
   - deploy
 
-variables:
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
-
-default:
-  image: python:3.12-slim
-
-cache:
-  key: "$CI_COMMIT_REF_SLUG"
-  paths:
-    - .cache/pip/
-
 build-documentation:
   stage: build
+  image: ruby:3.3
 
   before_script:
-    - pip install -r requirements.txt
+    - bundle install
 
   script:
-    # Generate PlantUML diagrams and build the MkDocs website
-    - mkdocs build --strict
+    - bundle exec jekyll build --config _config.yml
 
   artifacts:
     paths:
@@ -40,8 +28,7 @@ deploy-documentation:
       artifacts: true
 
   script:
-    - echo "Documentation build completed successfully."
-    - echo "Publishing documentation to GitLab Pages."
+    - echo "Publishing Jekyll documentation to GitLab Pages."
 
   pages:
     publish: public
