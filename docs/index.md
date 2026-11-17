@@ -28,7 +28,7 @@ and financial reports.
 - [Requirements](./requirements/software-requirement-specification.html)
 - [Architecture](./architecture/system-architecture.html)
 - [Use Case](./architecture/use-case-diagram.html)
-- Database Design
+- [Database Design](./architecture/ER-diagram.html)
 - API Documentation
 - Testing
 
