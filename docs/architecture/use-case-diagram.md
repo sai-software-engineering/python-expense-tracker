@@ -8,14 +8,24 @@ and the Python Expense Tracker application.
 ## Diagram
 
 ```mermaid
+# Use Case Diagram
+
+## Purpose
+
+This diagram illustrates the interactions between the user
+and the Java-based Expense Tracker application.
+
+## Diagram
+
+```mermaid
 usecase-beta
-direction TD
+direction TB
 
 actor User
 
 systemBoundary ExpenseTracker
 
-    Dashboard("View Dashboard")
+    ViewDashboard("View Dashboard")
 
     AddExpense("Add Expense")
     ViewExpenses("View Expenses")
@@ -28,13 +38,14 @@ systemBoundary ExpenseTracker
     DeleteIncome("Delete Income")
 
     ManageCategories("Manage Categories")
-    SelectCategory("Select Category")
 
     ViewReports("View Reports")
 
+    SelectCategory("Select Category")
+
 end
 
-User --> Dashboard
+User --> ViewDashboard
 
 User --> AddExpense
 User --> ViewExpenses
