@@ -8,16 +8,6 @@ and the Python Expense Tracker application.
 ## Diagram
 
 ```mermaid
-# Use Case Diagram
-
-## Purpose
-
-This diagram illustrates the interactions between the user
-and the Java-based Expense Tracker application.
-
-## Diagram
-
-```mermaid
 usecase-beta
 direction TB
 
