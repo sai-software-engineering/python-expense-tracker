@@ -26,6 +26,7 @@ app = FastAPI(
 app.include_router(category_router)
 app.include_router(expense_router)
 app.include_router(income_router)
+app.include_router(dashboard_router)
 
 @app.get("/")
 def root():
