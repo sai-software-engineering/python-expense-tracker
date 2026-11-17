@@ -65,8 +65,40 @@ Example: Adding an Expense.
 ## 4. Architecture Diagram
 
 ```mermaid
-usecase-beta
-```
+architecture-beta
+
+    group client(cloud)[Presentation Layer]
+    group backend(server)[Spring Boot Application]
+    group persistence(cloud)[Persistence Layer]
+    group database(database)[Database Layer]
+
+    service browser(server)[Web Browser] in client
+    service frontend(server)[HTML CSS JavaScript] in client
+
+    service controller(server)[REST Controllers] in backend
+    service validation(server)[Validation] in backend
+    service service(server)[Service Layer] in backend
+    service dto(server)[DTOs] in backend
+
+    service repository(server)[Spring Data JPA] in persistence
+    service hibernate(server)[Hibernate ORM] in persistence
+
+    service sqlite(database)[SQLite Database] in database
+
+    browser:R -- L:frontend
+    frontend:R -- L:controller
+
+    controller:B -- T:validation
+    validation:B -- T:dto
+    dto:B -- T:service
+
+    service:R -- L:repository
+    repository:R -- L:hibernate
+    hibernate:B -- T:sqlite
+ ```
+
+
+**Note:** This is a logical architecture diagram. The connections represent the intended application flow, not necessarily the exact runtime execution order.
 
 ## 5. Technology Stack
 
