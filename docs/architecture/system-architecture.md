@@ -76,30 +76,45 @@ architecture-beta
 
     service controller(server)[REST Controllers] in backend
     service validation(server)[Validation] in backend
-    service serviceLayer(server)[Service Layer] in backend
     service dto(database)[DTOs] in backend
+    service serviceLayer(server)[Service Layer] in backend
 
     service repository(server)[Spring Data JPA] in persistence
     service hibernate(server)[Hibernate ORM] in persistence
 
     service sqlite(database)[SQLite Database] in database
 
+    %% Row 1: Presentation Layer
     browser:R -- L:frontend
-    frontend:R -- L:controller
 
-    controller:B -- T:validation
-    validation:B -- T:dto
-    dto:B -- T:serviceLayer
+    %% Connection: Presentation -> Application
+    frontend:B -- T:controller
 
-    serviceLayer:R -- L:repository
+    %% Row 2: Spring Boot Application
+    controller:R -- L:validation
+    validation:R -- L:dto
+    dto:R -- L:serviceLayer
+
+    %% Connection: Application -> Persistence
+    serviceLayer:B -- T:repository
+
+    %% Row 3: Persistence Layer
     repository:R -- L:hibernate
+
+    %% Connection: Persistence -> Database
     hibernate:B -- T:sqlite
 
+    %% Horizontal Rows (Each Layer on its own line)
     align row browser frontend
-    align row controller validation
-    align row serviceLayer dto
+    align row controller validation dto serviceLayer
     align row repository hibernate
-    
+
+    %% Vertical Columns (Stacking the layers top-to-bottom)
+    align column frontend controller
+    align column serviceLayer repository
+    align column hibernate sqlite
+
+
    
  ```
 
