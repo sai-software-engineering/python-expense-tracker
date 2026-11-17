@@ -27,6 +27,7 @@ and financial reports.
 - [Project Overview](./project-charter.html)
 - [Requirements](./requirements/software-requirement-specification.html)
 - [Architecture](./architecture/system-architecture.html)
+- [Use Case](./architecture/use-case-diagram.html)
 - Database Design
 - API Documentation
 - Testing
