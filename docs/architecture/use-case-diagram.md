@@ -7,7 +7,7 @@ and the Python Expense Tracker application.
 
 ## Diagram
 
-![Use Case Diagram](diagrams/usecase-diagram.png)
+![Use Case Diagram](diagrams/usecase-diagram.svg)
 
 ## Actor
 

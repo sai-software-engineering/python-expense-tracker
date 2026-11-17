@@ -64,7 +64,7 @@ Example: Adding an Expense.
 
 ## 4. Architecture Diagram
 
-![System Architecture](diagrams/system-architecture.png)
+![System Architecture](diagrams/system-architecture.svg)
 
 ## 5. Technology Stack
 
