@@ -10,7 +10,7 @@ markdown: kramdown
 highlighter: rouge
 
 plugins:
-  - jekyll-seo-tag
+ 
   - jekyll-remote-theme
   - jekyll-include-cache
 
