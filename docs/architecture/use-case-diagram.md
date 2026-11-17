@@ -7,7 +7,10 @@ and the Python Expense Tracker application.
 
 ## Diagram
 
-![Use Case Diagram](diagrams/use-case-diagram.svg)
+```plantuml
+::include{file=diagrams/system-architecture.puml}
+
+```
 
 ## Actor
 
