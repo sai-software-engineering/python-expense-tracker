@@ -23,11 +23,10 @@ and financial reports.
 | Documentation | Markdown, MkDocs |
 | Hosting | GitLab Pages |
 
-## Documentation Sections
-
-- [Project Overview](../README.html)
-- [Requirements](../docs/requirements/software-requirement-specification.html)
-- [Architecture](../docs/architecture/system-architecture.html)
+## Documentation Section
+- [Project Overview](./project-charter.html)
+- [Requirements](./requirements/software-requirement-specification.html)
+- [Architecture](./architecture/system-architecture.html)
 - Database Design
 - API Documentation
 - Testing
