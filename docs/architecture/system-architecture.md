@@ -63,10 +63,8 @@ Example: Adding an Expense.
 8. The frontend displays the result.
 
 ## 4. Architecture Diagram
-```plantuml
-::include{file=diagrams/system-architecture.puml}
 
-```
+
 
 ## 5. Technology Stack
 

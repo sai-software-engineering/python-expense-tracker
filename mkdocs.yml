@@ -25,3 +25,9 @@ markdown_extensions:
 
 plugins:
   - search
+  - build_plantuml:
+      render: server
+      output_format: svg
+      diagram_root: docs/diagrams
+      output_folder: out
+      input_folder: src
