@@ -1,5 +1,8 @@
 from .categories import category_router as category_router
-
+from .expenses import expense_router as expense_router
+from .income import income_router as income_router
 __all__ = [
-    "category_router"
+    "category_router",
+    "expense_router",
+    "income_router"
 ]

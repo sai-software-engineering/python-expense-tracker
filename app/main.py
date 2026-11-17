@@ -4,7 +4,7 @@ from fastapi import FastAPI
 
 from app.database import Base, engine
 from app import models
-from app.routers import category_router
+from app.routers import *
 
 
 @asynccontextmanager
@@ -24,7 +24,8 @@ app = FastAPI(
 
 # Register routers
 app.include_router(category_router)
-
+app.include_router(expense_router)
+app.include_router(income_router)
 
 @app.get("/")
 def root():
