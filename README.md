@@ -61,8 +61,36 @@ pip install fastapi uvicorn sqlalchemy pydantic
 
 Start the development server with live reload enabled using Uvicorn:
 
-```
-uvicorn main:app --reload
+```plantuml
+@startuml
+
+left to right direction
+
+actor User
+
+rectangle "Expense Tracker" {
+
+    usecase "Add Expense" as UC1
+    usecase "Edit Expense" as UC2
+    usecase "Delete Expense" as UC3
+    usecase "View Expenses" as UC4
+    usecase "Manage Categories" as UC5
+    usecase "View Monthly Summary" as UC6
+    usecase "Manage Budget" as UC7
+    usecase "Generate Reports" as UC8
+
+}
+
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+User --> UC5
+User --> UC6
+User --> UC7
+User --> UC8
+
+@enduml
 
 ```
 
@@ -75,14 +103,21 @@ Once the server is running, you can access the interactive Swagger UI and docume
 * **ReDoc:** <http://127.0.0.1:8000/redoc>
 
 ### Core Endpoints Reference
-
-| **Method** | **Endpoint** | **Description** | **Request Body / Parameters** | 
-| `GET` | `/` | Health check root route | None | 
-| `GET` | `/users/` | Retrieve all users | None | 
-| `POST` | `/users/` | Create a new user | JSON (`name`, `email`, `role`) | 
-| `GET` | `/users/{user_id}` | Retrieve a user by ID | Path Parameter (`user_id`) | 
-| `PUT` | `/user/{user_id}` | Update an existing user | Path Parameter + JSON payload | 
-| `DELETE` | `/users/{user_id}` | Delete a user by ID | Path Parameter (`user_id`) | 
+```plantuml
+@startsalt
+{
+{T
++ Method | Endpoint | Description | Parameters
++ GET | / | Health check root route | None
++ GET | /users/ | Retrieve all users | None
++ POST | /users/ | Create a new user | name, email, role
++ GET | /users/{user_id} | Retrieve user by ID | user_id
++ PUT | /user/{user_id} | Update existing user | user_id + JSON
++ DELETE | /users/{user_id} | Delete user by ID | user_id
+}
+}
+@endsalt
+```
 
 ## 💡 Key Features
 
