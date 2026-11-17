@@ -5,5 +5,5 @@ pydantic
 aiosqlite
 greenlet
 mkdocs-material
-
+six
 mkdocs-build-plantuml-plugin
