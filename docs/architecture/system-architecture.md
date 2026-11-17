@@ -72,8 +72,8 @@ architecture-beta
     group persistence(cloud)[Persistence Layer]
     group database(database)[Database Layer]
 
-    service browser(server)[Web Browser] in client
-    service frontend(server)[HTML CSS JavaScript] in client
+    service browser(server)[Browser] in client
+    service frontend(server)[Frontend App] in client
 
     service controller(server)[REST Controllers] in backend
     service validation(server)[Validation] in backend
