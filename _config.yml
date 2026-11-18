@@ -1,7 +1,8 @@
 title: Expense Tracker
 description: Technical Documentation for Expense Tracker
 
-theme: jekyll-theme-cayman
+remote-theme: pages-themes/cayman
+
 
 source: docs
 destination: public
