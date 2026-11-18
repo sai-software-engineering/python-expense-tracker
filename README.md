@@ -60,34 +60,40 @@ The application aims to help users record income and expenses, organize transact
 | ORM | SQLAlchemy |
 | Data Validation | Pydantic |
 | API Documentation | Swagger UI / OpenAPI |
-| Diagrams | PlantUML, Mermaid |
-| Documentation | Markdown, MkDocs |
-| Documentation Hosting | GitLab Pages |
-| Version Control | Git, GitLab |
+| Diagrams | Mermaid |
+| Documentation | Markdown|
+| Documentation Hosting | Github Pages |
+| Version Control | Git, Github |
 
 ## Project Structure
 
-```text
-python-expense-tracker/
-│
-├── docs/
-│   ├── requirements/
-│   │   └── software-requirements-specification.md
-│   │
-│   └── architecture/
-│       ├── diagrams/
-│       │   └── use-case-diagram.puml
-│       └── use-case-diagram.md
-│
-├── app/
-│
-├── tests/
-│
-├── README.md
-└── mkdocs.yml
+```mermaid
+treeView-beta
+    python-expense-tracker
+        .gitignore
+        LICENSE
+        README.md
+        _config.yml
+        requirements.txt
+        app
+            __init__.py
+            __pycache__
+            database.py
+            main.py
+            models
+            routers
+            schemas
+            static
+            templates
+        docs
+            _config.yml
+            _includes
+            _layouts
+            architecture
+            index.md
+            project-charter.md
+            requirements.txt
 ```
-
-*The project structure will evolve as development progresses.*
 
 ## Currency Support
 
