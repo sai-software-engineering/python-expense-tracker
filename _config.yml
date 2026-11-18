@@ -4,9 +4,6 @@ description: Technical Documentation for Expense Tracker
 remote-theme: pages-themes/cayman
 
 
-source: docs
-destination: public
-
 markdown: kramdown
 highlighter: rouge
 
