@@ -7,3 +7,4 @@ greenlet
 mkdocs-material
 six
 mkdocs-build-plantuml-plugin
+jinja2

@@ -1,0 +1,151 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Categories | Expense Tracker</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">Expense Tracker</div>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/expenses">Expense</a>
+            <a href="/income">Income</a>
+            <a href="/categories" class="active">Categories</a>
+        </nav>
+    </header>
+
+
+    <main class="container">
+
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h1>Category Management</h1>
+            <p>Organize your income and expense categories.</p>
+        </section>
+
+
+        <!-- Add Category Form -->
+        <section class="chart-section">
+
+            <h2 id="category-form-title">Add New Category</h2>
+
+            <form id="category-form">
+
+                <input type="hidden" id="category-id">
+
+                <div class="form-group">
+
+                    <label for="category-name">Category Name</label>
+
+                    <input
+                        type="text"
+                        id="category-name"
+                        maxlength="100"
+                        placeholder="Enter category name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="category-type">Category Type</label>
+
+                    <select id="category-type" required>
+
+                        <option value="">Select Type</option>
+
+                        <option value="INCOME">Income</option>
+
+                        <option value="EXPENSE">Expense</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button type="submit" class="btn btn-primary">
+                        Save Category
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancel-edit"
+                        class="btn btn-secondary"
+                        hidden
+                    >
+                        Cancel
+                    </button>
+
+                </div>
+
+            </form>
+
+            <p id="category-message"></p>
+
+        </section>
+
+
+        <!-- Category History -->
+        <section class="chart-section">
+
+            <h2>All Categories</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Category Name</th>
+                            <th>Type</th>
+                            <th>Category Source</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="category-table-body">
+
+                        <tr>
+                            <td colspan="5">Loading categories...</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Expense Tracker | Manage your money wisely.</p>
+    </footer>
+
+
+    <script src="../static/js/categories.js"></script>
+
+</body>
+</html>
+```
